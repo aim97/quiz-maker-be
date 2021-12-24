@@ -2,17 +2,20 @@ import faker from 'faker';
 import mongoose from 'mongoose';
 
 export const getFakeMCQ = () => ({
+  id: mongoose.Types.ObjectId.generate().toString('hex'),
   body: faker.lorem.sentence(),
   options: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
   answer: Math.floor(Math.random() * 4),
 });
 
 export const getFakeEssayProblem = () => ({
+  id: mongoose.Types.ObjectId.generate().toString('hex'),
   body: faker.lorem.sentence(),
   answer: faker.lorem.word(),
 });
 
 export const getFakeCheckBoxes = () => ({
+  id: mongoose.Types.ObjectId.generate().toString('hex'),
   body: faker.lorem.sentence(),
   options: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
   answer: [
@@ -24,6 +27,7 @@ export const getFakeCheckBoxes = () => ({
 });
 
 export const getFakeNumericProblem = () => ({
+  id: mongoose.Types.ObjectId.generate().toString('hex'),
   body: faker.lorem.sentence(),
   answer: faker.datatype.number(),
 });

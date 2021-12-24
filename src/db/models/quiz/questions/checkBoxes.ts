@@ -20,6 +20,11 @@ export interface CheckBoxesModel extends mongoose.Model<CheckBoxesDoc> {
 }
 
 const CheckBoxesSchema = new mongoose.Schema<CheckBoxesDoc, CheckBoxesModel>({
+  id: {
+    type: String,
+    required: true,
+    default: mongoose.Types.ObjectId.generate().toString('hex'),
+  },
   body: {
     type: String,
     required: true,

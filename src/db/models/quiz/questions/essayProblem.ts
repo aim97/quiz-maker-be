@@ -18,6 +18,11 @@ export interface EssayProblemModel extends mongoose.Model<EssayProblemDoc> {
 }
 
 const EssayProblemSchema = new mongoose.Schema<EssayProblemDoc, EssayProblemModel>({
+  id: {
+    type: String,
+    required: true,
+    default: mongoose.Types.ObjectId.generate().toString('hex'),
+  },
   body: {
     type: String,
     required: true,

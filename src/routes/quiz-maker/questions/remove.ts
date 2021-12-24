@@ -25,4 +25,4 @@ router.delete(
 
 )
 
-export { router as addMCQRouter };
+export { router as removeQuestionRouter };

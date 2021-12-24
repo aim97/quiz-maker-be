@@ -18,6 +18,11 @@ export interface NumericProblemModel extends mongoose.Model<NumericProblemDoc> {
 }
 
 const NumericProblemSchema = new mongoose.Schema<NumericProblemDoc, NumericProblemModel>({
+  id: {
+    type: String,
+    required: true,
+    default: mongoose.Types.ObjectId.generate().toString('hex'),
+  },
   body: {
     type: String,
     required: true,

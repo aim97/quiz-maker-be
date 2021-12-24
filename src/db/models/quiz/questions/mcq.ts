@@ -20,6 +20,11 @@ export interface MCQModel extends mongoose.Model<MCQDoc> {
 }
 
 const MCQSchema = new mongoose.Schema<MCQDoc, MCQModel>({
+  id: {
+    type: String,
+    required: true,
+    default: mongoose.Types.ObjectId.generate().toString('hex'),
+  },
   body: {
     type: String,
     required: true,

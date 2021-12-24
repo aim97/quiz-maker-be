@@ -22,6 +22,7 @@ import { addMCQRouter } from './routes/quiz-maker/questions/addMcq';
 import { addCheckBoxesProblemRouter } from './routes/quiz-maker/questions/addCheckBoxes';
 import { addEssayProblemRouter } from './routes/quiz-maker/questions/addEssayProblem';
 import { addNumericProblemRouter } from './routes/quiz-maker/questions/addNumericProblem';
+import { removeQuestionRouter } from './routes/quiz-maker/questions/remove';
 
 const app = App();
 
@@ -52,6 +53,8 @@ app.use(addMCQRouter);
 app.use(addCheckBoxesProblemRouter);
 app.use(addEssayProblemRouter);
 app.use(addNumericProblemRouter);
+
+app.use(removeQuestionRouter);
 
 app.all('*', notFoundHandler);
 
