@@ -44,7 +44,7 @@ router.post(
     }, { 
       $push: { questions: question } 
     }, {
-      returnNewDocument: true
+      returnOriginal: false,
     });
 
     if (!quiz) {

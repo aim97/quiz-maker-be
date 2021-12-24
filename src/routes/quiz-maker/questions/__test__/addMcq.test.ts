@@ -25,7 +25,7 @@ it('allows the quiz owner to add a questions to an existing quiz', async () => {
   const questionsCount = quiz.questions.length;
   await quiz.save();
 
-  await request(app)
+  const response = await request(app)
     .post(`/quiz-maker/${quiz.id}/questions/addmcq`)
     .set('Cookie', teacherAccessCookies)
     .send(getFakeMCQ())
@@ -34,6 +34,8 @@ it('allows the quiz owner to add a questions to an existing quiz', async () => {
   const q = await db.quiz.findById(quiz.id);
   expect(q).not.toBeNull()
   expect(q!.questions.length).toEqual(questionsCount + 1);
+
+  expect(response.body.questions.length).toEqual(questionsCount + 1);
 });
 
 //! authentication tests
