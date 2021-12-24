@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import { QuizAttrs, QuizDoc, QuizModel } from './quiz.types';
-// import { MCQSchema } from './questions/mcq';
-// import { CheckBoxesSchema } from './questions/checkBoxes';
-// import { EssayProblemSchema } from './questions/essayProblem';
-// import { NumericProblemSchema } from './questions/numericProblem';
+import { MCQSchema } from './questions/mcq';
+import { CheckBoxesSchema } from './questions/checkBoxes';
+import { EssayProblemSchema } from './questions/essayProblem';
+import { NumericProblemSchema } from './questions/numericProblem';
 
 const QuizSchema = new mongoose.Schema<QuizDoc>({
   ownerId: {
@@ -14,8 +14,20 @@ const QuizSchema = new mongoose.Schema<QuizDoc>({
     type: Boolean,
     required: true,
   },
-  questions: {
-    type: [mongoose.Schema.Types.Mixed],//[MCQSchema|CheckBoxesSchema|EssayProblemSchema|NumericProblemSchema],
+  MCQs: {
+    type: [MCQSchema],
+    required: true,
+  },
+  checkBoxQuestions: {
+    type: [CheckBoxesSchema],
+    required: true,
+  },
+  essayProblems: {
+    type: [EssayProblemSchema],
+    required: true,
+  },
+  numericProblems: {
+    type: [NumericProblemSchema],
     required: true,
   },
 }, {
