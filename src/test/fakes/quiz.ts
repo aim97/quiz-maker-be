@@ -1,21 +1,23 @@
 import faker from 'faker';
 import mongoose from 'mongoose';
 
+import { MCQAttrs } from '../../db/models/quiz/questions/mcq';
+import { CheckBoxesAttrs } from '../../db/models/quiz/questions/checkBoxes';
+import { EssayProblemAttrs } from '../../db/models/quiz/questions/essayProblem';
+import { NumericProblemAttrs } from '../../db/models/quiz/questions/numericProblem';
+
 export const getFakeMCQ = () => ({
-  id: mongoose.Types.ObjectId.generate().toString('hex'),
   body: faker.lorem.sentence(),
   options: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
   answer: Math.floor(Math.random() * 4),
 });
 
 export const getFakeEssayProblem = () => ({
-  id: mongoose.Types.ObjectId.generate().toString('hex'),
   body: faker.lorem.sentence(),
   answer: faker.lorem.word(),
 });
 
 export const getFakeCheckBoxes = () => ({
-  id: mongoose.Types.ObjectId.generate().toString('hex'),
   body: faker.lorem.sentence(),
   options: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word(), faker.lorem.word()],
   answer: [
@@ -27,18 +29,11 @@ export const getFakeCheckBoxes = () => ({
 });
 
 export const getFakeNumericProblem = () => ({
-  id: mongoose.Types.ObjectId.generate().toString('hex'),
   body: faker.lorem.sentence(),
   answer: faker.datatype.number(),
 });
 
-export const getFakeQuestion = () => {
-  const qTypes = [getFakeMCQ, getFakeEssayProblem, getFakeCheckBoxes, getFakeNumericProblem];
-  const qType = qTypes[Math.floor(Math.random() * qTypes.length)];
-  return qType();
-};
-
-export const getFakeQuizWithQuestions = () => {
+export const getFakeQuizWithQuestions = <T>(getFakeQuestion: () => T): T[] => {
   const count = Math.floor(Math.random() * 10);
   const questions = [];
   for (let i = 0; i < count; i++) {
@@ -53,5 +48,8 @@ export const getFakeQuiz = (
 ({
   ownerId,
   state,
-  questions: getFakeQuizWithQuestions(),
+  MCQs: getFakeQuizWithQuestions(getFakeMCQ),
+  checkBoxQuestions: getFakeQuizWithQuestions(getFakeCheckBoxes),
+  essayProblems: getFakeQuizWithQuestions(getFakeEssayProblem),
+  numericProblems: getFakeQuizWithQuestions(getFakeNumericProblem),
 });

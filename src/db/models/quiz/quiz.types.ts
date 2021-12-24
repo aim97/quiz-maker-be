@@ -10,10 +10,10 @@ import { NumericProblemDoc, NumericProblemAttrs } from './questions/numericProbl
 export interface QuizAttrs {
   ownerId: string,
   state: boolean,
-  MCQs: MCQAttrs[],
-  checkBoxQuestions: CheckBoxesAttrs[],
-  essayProblems: EssayProblemAttrs[],
-  numericProblems: NumericProblemAttrs[],
+  MCQs?: MCQAttrs[],
+  checkBoxQuestions?: CheckBoxesAttrs[],
+  essayProblems?: EssayProblemAttrs[],
+  numericProblems?: NumericProblemAttrs[],
 };
 
 // This interface defines the properties that a Quiz document contains

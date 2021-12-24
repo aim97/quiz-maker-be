@@ -38,6 +38,13 @@ const CheckBoxesSchema = new mongoose.Schema<CheckBoxesDoc, CheckBoxesModel>({
       return v.length === 4;
     },
   }
+}, {
+  toJSON: {
+    transform(doc, ret) {
+      ret.id = ret._id;
+      delete ret._id;
+    },
+  }
 });
 
 export { CheckBoxesSchema };

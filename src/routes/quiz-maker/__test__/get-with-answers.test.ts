@@ -31,7 +31,6 @@ it('can retrieve a quiz with answers', async () => {
 
   expect(response.status).toBe(200);
   expect(response.body.quiz.id).toBe(quiz.id);
-  expect(response.body.quiz.questions.length).toBe(quiz.questions.length);
   expect(response.body.submissions.length).toBe(submissions.length);
 });
 

@@ -12,28 +12,28 @@
 import request from 'supertest';
 import faker from 'faker';
 
-import { app } from '../../../../app';
-import { db } from '../../../../db';
+import { app } from '../../../../../app';
+import { db } from '../../../../../db';
 
-import { getFakeQuiz, getFakeCheckBoxes } from '../../../../test/fakes/quiz';
+import { getFakeQuiz, getFakeCheckBoxes } from '../../../../../test/fakes/quiz';
 
 it('allows the quiz owner to add a questions to an existing quiz', async () => {
   const teacher = await global.newTeacher();
   const teacherAccessCookies = await global.getTeacherAccessCookies(teacher);
 
   const quiz = db.quiz.build(getFakeQuiz(teacher.id, false));
-  const questionsCount = quiz.questions.length;
+  const questionsCount = quiz.checkBoxQuestions.length;
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addcheckboxes`)
+    .post(`/quiz-maker/${quiz.id}/questions/checkboxes/add`)
     .set('Cookie', teacherAccessCookies)
     .send(getFakeCheckBoxes())
     .expect(201);
 
   const q = await db.quiz.findById(quiz.id);
   expect(q).not.toBeNull()
-  expect(q!.questions.length).toEqual(questionsCount + 1);
+  expect(q!.checkBoxQuestions.length).toEqual(questionsCount + 1);
 });
 
 //! authentication tests
@@ -46,7 +46,7 @@ it('allows only allows owner teacher to add a question', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addcheckboxes`)
+    .post(`/quiz-maker/${quiz.id}/questions/checkboxes/add`)
     .set('Cookie', anotherTeacherAccessCookies)
     .send(getFakeCheckBoxes())
     .expect(404);
@@ -61,7 +61,7 @@ it('doesn`t allow a student to add questions', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addcheckboxes`)
+    .post(`/quiz-maker/${quiz.id}/questions/checkboxes/add`)
     .set('Cookie', studentAccessCookies)
     .send(getFakeCheckBoxes())
     .expect(401);
@@ -84,7 +84,7 @@ it('only allows 4 options', async () => {
   }
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addcheckboxes`)
+    .post(`/quiz-maker/${quiz.id}/questions/checkboxes/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
       ...getFakeCheckBoxes(),
@@ -98,7 +98,7 @@ it('only allows 4 options', async () => {
   }
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addcheckboxes`)
+    .post(`/quiz-maker/${quiz.id}/questions/checkboxes/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
       ...getFakeCheckBoxes(),
@@ -123,7 +123,7 @@ it('only allows 4 answers (1 per checkbox)', async () => {
   }
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addcheckboxes`)
+    .post(`/quiz-maker/${quiz.id}/questions/checkboxes/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
       ...getFakeCheckBoxes(),
@@ -137,7 +137,7 @@ it('only allows 4 answers (1 per checkbox)', async () => {
     }
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addcheckboxes`)
+    .post(`/quiz-maker/${quiz.id}/questions/checkboxes/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
       ...getFakeCheckBoxes(),
@@ -154,7 +154,7 @@ it('can`t add a question to a published quiz', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addcheckboxes`)
+    .post(`/quiz-maker/${quiz.id}/questions/checkboxes/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
       ...getFakeCheckBoxes(),

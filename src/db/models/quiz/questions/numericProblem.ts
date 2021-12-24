@@ -26,6 +26,13 @@ const NumericProblemSchema = new mongoose.Schema<NumericProblemDoc, NumericProbl
     type: Number,
     required: true,
   }
+}, {
+  toJSON: {
+    transform(doc, ret) {
+      ret.id = ret._id;
+      delete ret._id;
+    },
+  }
 });
 
 export { NumericProblemSchema };

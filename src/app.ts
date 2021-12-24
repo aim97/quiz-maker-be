@@ -18,11 +18,15 @@ import { studentLoginRouter } from './routes/auth/student/login';
 import { getQuizWithAnswersRouter } from './routes/quiz-maker/get-with-answers'; 
 import { createQuizRouter } from './routes/quiz-maker/create';
 
-import { addMCQRouter } from './routes/quiz-maker/questions/addMcq';
-import { addCheckBoxesProblemRouter } from './routes/quiz-maker/questions/addCheckBoxes';
-import { addEssayProblemRouter } from './routes/quiz-maker/questions/addEssayProblem';
-import { addNumericProblemRouter } from './routes/quiz-maker/questions/addNumericProblem';
-import { removeQuestionRouter } from './routes/quiz-maker/questions/remove';
+import { addMCQRouter } from './routes/quiz-maker/questions/mcq/addMcq';
+import { addCheckBoxesProblemRouter } from './routes/quiz-maker/questions/checkbox/addCheckBoxes';
+import { addEssayProblemRouter } from './routes/quiz-maker/questions/essay/addEssayProblem';
+import { addNumericProblemRouter } from './routes/quiz-maker/questions/numeric/addNumericProblem';
+
+import { removeMCQQuestionRouter } from './routes/quiz-maker/questions/mcq/remove';
+import { removeCheckBoxQuestionRouter } from './routes/quiz-maker/questions/checkbox/remove';
+import { removeEssayQuestionRouter } from './routes/quiz-maker/questions/essay/remove';
+import { removeNumericProblemRouter } from './routes/quiz-maker/questions/numeric/remove';
 
 const app = App();
 
@@ -54,7 +58,10 @@ app.use(addCheckBoxesProblemRouter);
 app.use(addEssayProblemRouter);
 app.use(addNumericProblemRouter);
 
-app.use(removeQuestionRouter);
+app.use(removeMCQQuestionRouter);
+app.use(removeCheckBoxQuestionRouter);
+app.use(removeEssayQuestionRouter);
+app.use(removeNumericProblemRouter);
 
 app.all('*', notFoundHandler);
 

@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 import request from 'supertest';
 import faker from 'faker';
 
-import { TeacherDoc } from '../db/models/teacher/teacher.types';
-import { StudentDoc } from '../db/models/student/student.types';
+// import { TeacherDoc } from '../db/models/teacher/teacher.types';
+// import { StudentDoc } from '../db/models/student/student.types';
 
 import { app } from '../app';
 import { getFakeStudent } from './fakes/student';

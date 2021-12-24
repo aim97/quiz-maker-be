@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
 import { body } from 'express-validator';
 
-import { db } from '../../../db';
+import { db } from '../../../../db';
 
-import { onlyTeachers } from '../../../common/middlewares/only-teacher';
-import { validationHandler } from '../../../common/middlewares/validation-handler';
-import { NotFoundError } from '../../../common/errors/NotFoundError';
+import { onlyTeachers } from '../../../../common/middlewares/only-teacher';
+import { validationHandler } from '../../../../common/middlewares/validation-handler';
+import { NotFoundError } from '../../../../common/errors/NotFoundError';
 const router: Router = Router();
 
 const checks = [
@@ -20,12 +20,12 @@ const checks = [
   body('answer')
     .exists()
     .withMessage('Answer is required')
-    .isNumeric()
-    .withMessage('Answer must be a number')
+    .isString()
+    .withMessage('Answer must be a string')
 ];
 
 router.post(
-  '/quiz-maker/:quizId/questions/addNumericProblem',
+  '/quiz-maker/:quizId/questions/essay/add',
   onlyTeachers,
   checks,
   validationHandler,
@@ -42,7 +42,7 @@ router.post(
       ownerId: req.currentUser!.id,
       state: false,
     }, { 
-      $push: { questions: question } 
+      $push: { essayProblems: question } 
     }, {
       returnOriginal: false,
     });
@@ -55,4 +55,4 @@ router.post(
 
 )
 
-export { router as addNumericProblemRouter };
+export { router as addEssayProblemRouter };

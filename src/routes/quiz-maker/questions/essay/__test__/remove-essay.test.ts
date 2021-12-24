@@ -12,10 +12,10 @@
 import request from 'supertest';
 import faker from 'faker';
  
-import { app } from '../../../../app';
-import { db } from '../../../../db';
+import { app } from '../../../../../app';
+import { db } from '../../../../../db';
 
-import { getFakeQuiz, getFakeMCQ } from '../../../../test/fakes/quiz';
+import { getFakeQuiz, getFakeEssayProblem } from '../../../../../test/fakes/quiz';
  
 it('allows the quiz owner to delete an existing questions from an existing quiz', async () => {
   const teacher = await global.newTeacher();
@@ -25,16 +25,17 @@ it('allows the quiz owner to delete an existing questions from an existing quiz'
   await quiz.save();
 
   const response = await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addmcq`)
+    .post(`/quiz-maker/${quiz.id}/questions/essay/add`)
     .set('Cookie', teacherAccessCookies)
-    .send(getFakeMCQ())
+    .send(getFakeEssayProblem())
     .expect(201);
 
-  // choose a random question
-  const question = response.body.questions[Math.floor(Math.random() * response.body.questions.length)];
+  // pick a random mcq question
+  const q = response.body;
+  const mcq = q.essayProblems[0];
 
   await request(app)
-    .delete(`/quiz-maker/${quiz.id}/questions/${question.id}/remove`)
+    .delete(`/quiz-maker/${quiz.id}/questions/essay/${mcq.id}/remove`)
     .set('Cookie', teacherAccessCookies)
     .expect(200);
 });

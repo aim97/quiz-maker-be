@@ -35,6 +35,13 @@ const MCQSchema = new mongoose.Schema<MCQDoc, MCQModel>({
     type: Number,
     required: true,
   }
+}, {
+  toJSON: {
+    transform(doc, ret) {
+      ret.id = ret._id;
+      delete ret._id;
+    },
+  }
 });
 
 export { MCQSchema };

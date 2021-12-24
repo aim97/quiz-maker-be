@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express';
 import { body } from 'express-validator';
 
-import { db } from '../../../db';
+import { db } from '../../../../db';
 
-import { onlyTeachers } from '../../../common/middlewares/only-teacher';
-import { validationHandler } from '../../../common/middlewares/validation-handler';
-import { NotFoundError } from '../../../common/errors/NotFoundError';
+import { onlyTeachers } from '../../../../common/middlewares/only-teacher';
+import { validationHandler } from '../../../../common/middlewares/validation-handler';
+import { NotFoundError } from '../../../../common/errors/NotFoundError';
 const router: Router = Router();
 
 const checks = [
@@ -39,7 +39,7 @@ const checks = [
 ];
 
 router.post(
-  '/quiz-maker/:quizId/questions/addcheckboxes', 
+  '/quiz-maker/:quizId/questions/checkboxes/add', 
   onlyTeachers,
   checks,
   validationHandler,
@@ -57,7 +57,7 @@ router.post(
       ownerId: req.currentUser!.id,
       state: false,
     }, { 
-      $push: { questions: question } 
+      $push: { checkBoxQuestions: question } 
     }, {
       returnOriginal: false,
     });

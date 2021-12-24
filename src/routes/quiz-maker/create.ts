@@ -11,7 +11,7 @@ router.post(
   onlyTeachers,
   async (req: Request, res: Response) => {
     const { id } = req.currentUser!;
-    const quizModel = db.quiz.build({ ownerId:id, state: false, questions: [] });
+    const quizModel = db.quiz.build({ ownerId:id, state: false});
     await quizModel.save();
     res.status(201).send(quizModel);
   }

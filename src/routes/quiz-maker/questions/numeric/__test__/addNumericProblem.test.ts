@@ -12,28 +12,28 @@
 import request from 'supertest';
 import faker from 'faker';
 
-import { app } from '../../../../app';
-import { db } from '../../../../db';
+import { app } from '../../../../../app';
+import { db } from '../../../../../db';
 
-import { getFakeQuiz, getFakeNumericProblem } from '../../../../test/fakes/quiz';
+import { getFakeQuiz, getFakeNumericProblem } from '../../../../../test/fakes/quiz';
 
 it('allows the quiz owner to add a questions to an existing quiz', async () => {
   const teacher = await global.newTeacher();
   const teacherAccessCookies = await global.getTeacherAccessCookies(teacher);
 
   const quiz = db.quiz.build(getFakeQuiz(teacher.id, false));
-  const questionsCount = quiz.questions.length;
+  const questionsCount = quiz.numericProblems.length;
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addNumericProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/numeric/add`)
     .set('Cookie', teacherAccessCookies)
     .send(getFakeNumericProblem())
     .expect(201);
 
   const q = await db.quiz.findById(quiz.id);
   expect(q).not.toBeNull()
-  expect(q!.questions.length).toEqual(questionsCount + 1);
+  expect(q!.numericProblems.length).toEqual(questionsCount + 1);
 });
 
 //! authentication tests
@@ -46,7 +46,7 @@ it('allows only allows owner teacher to add a question', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addNumericProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/numeric/add`)
     .set('Cookie', anotherTeacherAccessCookies)
     .send(getFakeNumericProblem())
     .expect(404);
@@ -61,7 +61,7 @@ it('doesn`t allow a student to add questions', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addNumericProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/numeric/add`)
     .set('Cookie', studentAccessCookies)
     .send(getFakeNumericProblem())
     .expect(401);
@@ -77,7 +77,7 @@ it('only allows numeric answer', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addNumericProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/numeric/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
       ...getFakeNumericProblem(),
@@ -94,7 +94,7 @@ it('can`t add a question to a published quiz', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addNumericProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/numeric/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
       ...getFakeNumericProblem(),

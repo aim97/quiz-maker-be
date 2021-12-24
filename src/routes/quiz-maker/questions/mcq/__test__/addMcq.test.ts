@@ -12,28 +12,30 @@
 import request from 'supertest';
 import faker from 'faker';
 
-import { app } from '../../../../app';
-import { db } from '../../../../db';
+import { app } from '../../../../../app';
+import { db } from '../../../../../db';
 
-import { getFakeQuiz, getFakeEssayProblem } from '../../../../test/fakes/quiz';
+import { getFakeQuiz, getFakeMCQ } from '../../../../../test/fakes/quiz';
 
 it('allows the quiz owner to add a questions to an existing quiz', async () => {
   const teacher = await global.newTeacher();
   const teacherAccessCookies = await global.getTeacherAccessCookies(teacher);
 
   const quiz = db.quiz.build(getFakeQuiz(teacher.id, false));
-  const questionsCount = quiz.questions.length;
+  const questionsCount = quiz.MCQs.length;
   await quiz.save();
 
-  await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addEssayProblem`)
+  const response = await request(app)
+    .post(`/quiz-maker/${quiz.id}/questions/mcq/add`)
     .set('Cookie', teacherAccessCookies)
-    .send(getFakeEssayProblem())
+    .send(getFakeMCQ())
     .expect(201);
 
   const q = await db.quiz.findById(quiz.id);
   expect(q).not.toBeNull()
-  expect(q!.questions.length).toEqual(questionsCount + 1);
+  expect(q!.MCQs.length).toEqual(questionsCount + 1);
+
+  expect(response.body.MCQs.length).toEqual(questionsCount + 1);
 });
 
 //! authentication tests
@@ -46,9 +48,9 @@ it('allows only allows owner teacher to add a question', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addEssayProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/mcq/add`)
     .set('Cookie', anotherTeacherAccessCookies)
-    .send(getFakeEssayProblem())
+    .send(getFakeMCQ())
     .expect(404);
 });
 
@@ -61,14 +63,53 @@ it('doesn`t allow a student to add questions', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addEssayProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/mcq/add`)
     .set('Cookie', studentAccessCookies)
-    .send(getFakeEssayProblem())
+    .send(getFakeMCQ())
     .expect(401);
 });
 
 //!validation tests
-it('only allows string answer between 1 and 4', async () => {
+it('only allows 4 options', async () => {
+  const teacher = await global.newTeacher();
+  const teacherAccessCookies = await global.getTeacherAccessCookies(teacher);
+
+  const quiz = db.quiz.build(getFakeQuiz(teacher.id, false));
+  await quiz.save();
+
+  // generate 2 numbers one less than 4 and the other greater than 4
+  const wrongAnswers = [faker.datatype.number({ min: 1, max: 3 }), faker.datatype.number({ min: 5, max: 10 })];
+  // generate few options with first number
+  const options1:string[] = [];
+  for (let i = 0; i < wrongAnswers[0]; i++) {
+    options1.push(faker.lorem.word());
+  }
+
+  await request(app)
+    .post(`/quiz-maker/${quiz.id}/questions/mcq/add`)
+    .set('Cookie', teacherAccessCookies)
+    .send({
+      ...getFakeMCQ(),
+      options: options1,
+    })
+    .expect(400);
+
+  const options2:string[] = [];
+  for (let i = 0; i < wrongAnswers[1]; i++) {
+    options1.push(faker.lorem.word());
+  }
+
+  await request(app)
+    .post(`/quiz-maker/${quiz.id}/questions/mcq/add`)
+    .set('Cookie', teacherAccessCookies)
+    .send({
+      ...getFakeMCQ(),
+      options: options2,
+    })
+    .expect(400);
+});
+
+it('only allows numeric answer between 1 and 4', async () => {
   const teacher = await global.newTeacher();
   const teacherAccessCookies = await global.getTeacherAccessCookies(teacher);
 
@@ -76,11 +117,11 @@ it('only allows string answer between 1 and 4', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addEssayProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/mcq/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
-      ...getFakeEssayProblem(),
-      answer: faker.datatype.number({min: 0, max: 100}),
+      ...getFakeMCQ(),
+      answer: faker.lorem.word(),
     })
     .expect(400);
 });
@@ -93,10 +134,10 @@ it('can`t add a question to a published quiz', async () => {
   await quiz.save();
 
   await request(app)
-    .post(`/quiz-maker/${quiz.id}/questions/addEssayProblem`)
+    .post(`/quiz-maker/${quiz.id}/questions/mcq/add`)
     .set('Cookie', teacherAccessCookies)
     .send({
-      ...getFakeEssayProblem(),
+      ...getFakeMCQ(),
     })
     .expect(404);
 });

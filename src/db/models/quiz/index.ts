@@ -17,18 +17,22 @@ const QuizSchema = new mongoose.Schema<QuizDoc>({
   MCQs: {
     type: [MCQSchema],
     required: true,
+    default: [],
   },
   checkBoxQuestions: {
     type: [CheckBoxesSchema],
     required: true,
+    default: [],
   },
   essayProblems: {
     type: [EssayProblemSchema],
     required: true,
+    default: [],
   },
   numericProblems: {
     type: [NumericProblemSchema],
     required: true,
+    default: [],
   },
 }, {
   toJSON: {
