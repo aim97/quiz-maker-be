@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "test": "jest --no-cache --watchAll"
+    "test": "jest --no-cache --watchAll",
+    "start": "ts-node-dev ./src/index.ts"
   },
   "dependencies": {
     "@types/cookie-session": "^2.0.43",
