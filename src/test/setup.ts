@@ -59,7 +59,7 @@ beforeAll(async () => {
   
   process.env.MONGO_URI = memdb.getUri();
   process.env.JWT_KEY = faker.internet.password();
-  // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
   await mongoose.connect(process.env.MONGO_URI);
 });

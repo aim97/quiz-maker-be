@@ -25,7 +25,7 @@ import { addNumericProblemRouter } from './routes/quiz-maker/questions/addNumeri
 
 const app = App();
 
-// app.set('trust proxy', true); // trust ingress proxy (in dev env where we use a fake certificate)
+app.set('trust proxy', true); // trust ingress proxy (in dev env where we use a fake certificate)
 
 app.use(json());
 app.use(

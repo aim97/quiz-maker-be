@@ -12,6 +12,7 @@ it('allows Teacher to login with email and password', async () => {
       password: user.password,
     }).expect(200);
 
+  console.log(response.get('Set-Cookie'));
   expect(response.get('Set-Cookie')).toBeDefined();
 });
 
