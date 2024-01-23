@@ -1,0 +1,382 @@
+repo_name: aim97/quiz-maker-be
+report_id: 9503fe6f3b6bff3a8c6e1f3031abe15d
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-23T19:08:29+00:00'
+requested_by: aim97
+provider: github
+branch: master
+detected_tools_count: 25
+tools:
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/aim97/quiz-maker-be
+  detection_source: Repo Metadata
+- name: ExpressJS
+  description: Sinatra inspired web development framework for node.js -- insanely
+    fast, flexible, and simple
+  website_url: http://expressjs.com/
+  version: 4.17.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Microframeworks (Backend)
+  image_url: https://img.stackshare.io/service/1163/hashtag.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: MongoDB
+  description: The database for giant ideas
+  website_url: http://www.mongodb.com/
+  version: 4.2.2
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1030/leaf-360x360.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: Mongoose
+  description: MongoDB object modeling designed to work in an asynchronous environment
+  website_url: http://mongoosejs.com/
+  version: 6.1.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Object Document Mapper (ODM)
+  image_url: https://img.stackshare.io/service/1231/0TXzZU7W_400x400.jpg
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: Dotenv
+  description: Loads environment variables from .env for Nodejs projects
+  website_url: https://github.com/motdotla/dotenv
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Server Configuration and Automation
+  image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be
+  detection_source: Repo Metadata
+- name: Jest
+  description: Painless JavaScript Unit Testing
+  website_url: http://facebook.github.io/jest/
+  version: 27.4.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/830/jest.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: SuperTest
+  description: 'A library for testing node.js HTTP servers '
+  website_url: https://www.npmjs.com/package/supertest
+  version: 6.1.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/no-img-open-source.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: Yarn
+  description: A new package manager for JavaScript
+  website_url: https://yarnpkg.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: yarn.lock
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/package.json
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: "@types/express"
+  description: TypeScript definitions for Express
+  package_url: https://www.npmjs.com/@types/express
+  version: 4.17.13
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16100/default_d947c1690e032a288145c7e2491999eab3ea8ede.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: "@types/faker"
+  description: TypeScript definitions for faker
+  package_url: https://www.npmjs.com/@types/faker
+  version: 5.5.9
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17400/default_68a60246a766655932541acc39422873bd51360a.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: "@types/jest"
+  description: TypeScript definitions for Jest
+  package_url: https://www.npmjs.com/@types/jest
+  version: 27.0.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15840/default_004658cda9b38934f2871435e9dc15608c86e8be.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:24:24.000000000 Z
+- name: "@types/jsonwebtoken"
+  description: TypeScript definitions for jsonwebtoken
+  package_url: https://www.npmjs.com/@types/jsonwebtoken
+  version: 8.5.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16959/default_caea01ce44a5fd1bb200d8fc0f8f2a1695b4e569.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: "@types/supertest"
+  description: TypeScript definitions for SuperTest
+  package_url: https://www.npmjs.com/@types/supertest
+  version: 2.0.11
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16805/default_31a4e0e11d348225088320f3a5c5ea6fa49c27ad.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:24:24.000000000 Z
+- name: cookie-session
+  description: Cookie session middleware
+  package_url: https://www.npmjs.com/cookie-session
+  version: 2.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17669/default_4ba4cce198b4498f328ca26971f69b03cf49892a.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: esm
+  description: Tomorrow's ECMAScript modules today!
+  package_url: https://www.npmjs.com/esm
+  version: 3.2.25
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16371/default_17385ab3aa01d4c295c08d4a9736140df691c5e9.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: express
+  description: Fast, unopinionated, minimalist web framework
+  package_url: https://www.npmjs.com/express
+  version: 4.17.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15818/default_db4a7791d2f1174547374b9b587bc10fec088a5a.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+  vulnerabilities:
+  - name: qs vulnerable to Prototype Pollution
+    cve_id: CVE-2022-24999
+    cve_url: https://github.com/advisories/GHSA-hrpp-h998-j3pp
+    detected_date: Dec 7
+    severity: high
+    first_patched: 4.17.3
+- name: express-validator
+  description: Express middleware for the validator module
+  package_url: https://www.npmjs.com/express-validator
+  version: 6.14.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17906/default_e0b07170ab7d7ea66954ff35fdeaae5255c4c0aa.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: faker
+  description: Generate massive amounts of fake contextual data
+  package_url: https://www.npmjs.com/faker
+  version: 5.5.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16327/default_1baba0e6ece19a38adfb211f686c83c781ff703a.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: http-status
+  description: Interact with HTTP status code
+  package_url: https://www.npmjs.com/http-status
+  version: 1.5.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17707/default_7ff152b9bcf219fad0d56c78a016d5bad6a2a526.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+- name: jsonwebtoken
+  description: JSON Web Token implementation
+  package_url: https://www.npmjs.com/jsonwebtoken
+  version: 8.5.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16155/default_77b54a203c743d16eddb6b6390cba17218454fa0.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:00:18.000000000 Z
+  vulnerabilities:
+  - name: jsonwebtoken has insecure input validation in jwt.verify function
+    cve_id: CVE-2022-23529
+    cve_url: https://github.com/advisories/GHSA-27h2-hvpr-p74q
+    detected_date: Dec 22
+    severity: high
+    first_patched: 9.0.0
+  - name: 'jsonwebtoken unrestricted key type could lead to legacy keys usage '
+    cve_id: CVE-2022-23539
+    cve_url: https://github.com/advisories/GHSA-8cf7-32gw-wr33
+    detected_date: Dec 22
+    severity: moderate
+    first_patched: 9.0.0
+  - name: jsonwebtoken vulnerable to signature validation bypass due to insecure default
+      algorithm in jwt.verify()
+    cve_id: CVE-2022-23540
+    cve_url: https://github.com/advisories/GHSA-qwph-4952-7xr6
+    detected_date: Dec 22
+    severity: moderate
+    first_patched: 9.0.0
+  - name: jsonwebtoken's insecure implementation of key retrieval function could lead
+      to Forgeable Public/Private Tokens from RSA to HMAC
+    cve_id: CVE-2022-23541
+    cve_url: https://github.com/advisories/GHSA-hjrf-2m68-5959
+    detected_date: Dec 22
+    severity: moderate
+    first_patched: 9.0.0
+- name: ts-jest
+  description: A preprocessor with source maps support to help use TypeScript with
+    Jest
+  package_url: https://www.npmjs.com/ts-jest
+  version: 27.1.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15864/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:24:24.000000000 Z
+- name: ts-node-dev
+  description: Compiles your TS app and restarts when files are modified
+  package_url: https://www.npmjs.com/ts-node-dev
+  version: 1.1.8
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17644/default_2b5fe3dc5bfc4e83a84162459ff612ac6febd61a.png
+  detection_source_url: https://github.com/aim97/quiz-maker-be/blob/master/yarn.lock
+  detection_source: package.json
+  last_updated_by: mohamed ahmed abd almageed
+  last_updated_on: 2021-12-24 07:24:24.000000000 Z
